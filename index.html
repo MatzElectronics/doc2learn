@@ -332,7 +332,7 @@ dirtyHTML = he.encode(dirtyHTML);
     for(var k = 0; k < imgSrcs.length; k++) {
 	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ', \'' + imgSrcs[k] + '\');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
     }
-	
+document.getElementById("hide0").style.display="none";		
 }
 
   var zip = new JSZip();
@@ -460,7 +460,7 @@ button:active {
 </head>
 <body>
 
-	<div id="hide1">
+	<div id="hide0">
 <!-- Create the editor container -->
 <div class="banner">Step 1: Paste in content from Google Docs.</div>
 	<br>
@@ -480,6 +480,7 @@ button:active {
 <input id="plxImgDir" value="https://learn.parallax.com/sites/default/files/content/" size="60"/><br>
 		<i style="font-size:8px;color="#dd3333;">be sure the address above ends with a forward slash ("/")</i><br>
 <br>
+</div><div id="hide1">
 <div class="banner">Step 3: Rename each image file.</div><br>
 <button onclick="getImages();" id="ProcessImages">List Images</button><br>
 <div id="imageList"></div>
