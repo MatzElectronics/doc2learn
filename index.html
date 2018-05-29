@@ -286,25 +286,17 @@ c=a.heap_max+1;c<V;c++)d=a.heap[c],f=i[2*i[2*d+1]+1]+1,f>o&&(f=o,p++),i[2*d+1]=f
 var toDataURL = function(src, idx) {
   var img = new Image();
   img.crossOrigin = 'Anonymous';
+  img.onload = function() {
     var canvas = document.createElement('CANVAS');
     var ctx = canvas.getContext('2d');
-  //img.onload = function() {
-    //var dataURL;
-    //canvas.height = this.naturalHeight;
-    //canvas.width = this.naturalWidth;
-    //ctx.drawImage(this, 0, 0);
-    //dataURL = canvas.toDataURL('image/png');
+    var dataURL;
+    canvas.height = this.naturalHeight;
+    canvas.width = this.naturalWidth;
+    ctx.drawImage(this, 0, 0);
+    dataURL = canvas.toDataURL('image/png');
     //callback(dataURL, idx);
-    
-  //};
-	
-	img.onload = function() {
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage( img, 0, 0 );
-    localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
-		imgSrcs[idx] = localStorage.getItem('savedImageData');
-}
+    imgSrcs[idx] = dataURL;
+  };
   img.src = src;
   if (img.complete || img.complete === undefined) {
     img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
@@ -400,7 +392,7 @@ function butter(k) {
 	    canvas.width = img.width;
 	    canvas.height = img.height;
 	    ctx.drawImage( img, 0, 0 );
-	    localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
+	    localStorage.setItem( "savedImageData" + k, canvas.toDataURL("image/png") );
 	}
 	img.src = src;
 	// make sure the load event fires for cached images too
@@ -409,7 +401,7 @@ function butter(k) {
 	    img.src = src;
 	}
 
-	imgSrcs[k] = localStorage.getItem('savedImageData');
+	imgSrcs[k] = localStorage.getItem('savedImageData' + k);
 }
 
 
