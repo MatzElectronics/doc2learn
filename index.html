@@ -376,16 +376,16 @@ console.log("data:image/png;base64," + b64);
 var showPics = function() {
     var theList = document.getElementById("imageList");
     for(var k = 0; k < imgSrcs.length; k++) {
-	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
+	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ', ' + imgSrcs[k] + ');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
     }
 }
 
 
-function butter(k) {
+function butter(k, src) {
 	var img = new Image,
 	    canvas = document.createElement("canvas"),
 	    ctx = canvas.getContext("2d"),
-	    src = "https://docs.google.com/a/parallax.com/drawings/d/sBfeQmHGlYmU0LurqpjSXfg/image?w=554&h=238&rev=91&ac=1"; // insert image url here
+	    //src = "https://docs.google.com/a/parallax.com/drawings/d/sBfeQmHGlYmU0LurqpjSXfg/image?w=554&h=238&rev=91&ac=1"; // insert image url here
 
 	img.crossOrigin = "Anonymous";
 
