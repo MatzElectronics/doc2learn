@@ -394,6 +394,7 @@ function butter(k, s) {
 	    canvas.height = img.height;
 	    ctx.drawImage( img, 0, 0 );
 	    localStorage.setItem( "savedImageData" + k, canvas.toDataURL("image/png") );
+	    imgSrcs[k] = localStorage.getItem('savedImageData' + k);
 	}
 	img.src = src;
 	// make sure the load event fires for cached images too
@@ -402,7 +403,7 @@ function butter(k, s) {
 	    img.src = src;
 	}
 
-	imgSrcs[k] = localStorage.getItem('savedImageData' + k);
+
 }
 
 
