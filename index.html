@@ -345,7 +345,7 @@ var renamePics = function() {
   var dirtyHTML = document.getElementById("cleanHTML").value;
   
     for(var k = 0; k < imgSrcs.length; k++) {
-
+/*
 	// hard won knowledge from http://stackoverflow.com/questions/20035615/using-raw-image-data-from-ajax-request-for-data-uri
 	if (imgSrcs[k].indexOf('://') > -1) {
 
@@ -363,7 +363,7 @@ console.log("data:image/png;base64," + b64);
 	  };
 	  xmlHTTP.send();
 	}
-
+*/
 	dirtyHTML = dirtyHTML.replace('<img src="' + k + '" />', '<img src="' + plxPre + document.getElementById("imageSrcName" + k).value + '.png" />');
     }
 
@@ -383,13 +383,38 @@ console.log("data:image/png;base64," + b64);
 var showPics = function() {
     var theList = document.getElementById("imageList");
     for(var k = 0; k < imgSrcs.length; k++) {
-	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
+	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
     }
 }
 
+
+function butter(k) {
+	var img = new Image,
+	    canvas = document.createElement("canvas"),
+	    ctx = canvas.getContext("2d"),
+	    src = "https://docs.google.com/a/parallax.com/drawings/d/sBfeQmHGlYmU0LurqpjSXfg/image?w=554&h=238&rev=91&ac=1"; // insert image url here
+
+	img.crossOrigin = "Anonymous";
+
+	img.onload = function() {
+	    canvas.width = img.width;
+	    canvas.height = img.height;
+	    ctx.drawImage( img, 0, 0 );
+	    localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
+	}
+	img.src = src;
+	// make sure the load event fires for cached images too
+	if ( img.complete || img.complete === undefined ) {
+	    img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+	    img.src = src;
+	}
+
+	imgSrcs[k] = localStorage.getItem('savedImageData');
+}
+
+
+
 var downloadPics = function () {
-
-
 
   zip.generateAsync({type:"blob"})
       .then(function (content) {
