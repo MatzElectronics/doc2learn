@@ -328,6 +328,10 @@ dirtyHTML = he.encode(dirtyHTML);
 
 
 	document.getElementById("cleanHTML").value = dirtyHTML;
+	    var theList = document.getElementById("imageList");
+    for(var k = 0; k < imgSrcs.length; k++) {
+	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ', \'' + imgSrcs[k] + '\');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
+    }
 }
 
   var zip = new JSZip();
@@ -353,13 +357,6 @@ var renamePics = function() {
     zip.file(document.getElementById("imageSrcName" + k).value + '.png', (imgSrcs[k].split(","))[1], {base64: true});
   }
 	
-}
-
-var showPics = function() {
-    var theList = document.getElementById("imageList");
-    for(var k = 0; k < imgSrcs.length; k++) {
-	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ', \'' + imgSrcs[k] + '\');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
-    }
 }
 
 
@@ -479,11 +476,18 @@ button:active {
 	<br>
 	<div class="banner">Step 2: Set the image folder for this page on learn.</div><br>
 <input id="plxImgDir" value="http://learn.parallax.com/" size="60"/><br>
-<button onclick="getImages();" id="ProcessImages">Process Images</button><br>
-<button onclick="showPics();" id="ListImages">List Images</button><br>
+<br>
+<div class="banner">Step 3: Rename each image file.</div><br>
+<button onclick="getImages();" id="ProcessImages">List Images</button><br>
 <div id="imageList"></div>
-<button onclick="renamePics();" id="RenameImages">Rename Images</button><br>
+<br>
+<div class="banner">Step 4: Save new image names.</div><br>
+<button onclick="renamePics();" id="RenameImages">Save Images</button><br>
+<br>
+<div class="banner">Step 5: Download images and HTML.</div><br>
 <button onclick="downloadPics();" id="DownloadImages">Download Files</button><br>
+<br>
+<div class="banner">Step 6: Copy HTML below and paste into the learn CMS <b>source</b>.</div><br>
 <textarea id="cleanHTML" htmlEsacpe="false"></textarea>
 
 </body></html>  
