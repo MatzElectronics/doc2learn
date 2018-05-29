@@ -286,17 +286,25 @@ c=a.heap_max+1;c<V;c++)d=a.heap[c],f=i[2*i[2*d+1]+1]+1,f>o&&(f=o,p++),i[2*d+1]=f
 var toDataURL = function(src, idx) {
   var img = new Image();
   img.crossOrigin = 'Anonymous';
-  img.onload = function() {
     var canvas = document.createElement('CANVAS');
     var ctx = canvas.getContext('2d');
-    var dataURL;
-    canvas.height = this.naturalHeight;
-    canvas.width = this.naturalWidth;
-    ctx.drawImage(this, 0, 0);
-    dataURL = canvas.toDataURL('image/png');
+  //img.onload = function() {
+    //var dataURL;
+    //canvas.height = this.naturalHeight;
+    //canvas.width = this.naturalWidth;
+    //ctx.drawImage(this, 0, 0);
+    //dataURL = canvas.toDataURL('image/png');
     //callback(dataURL, idx);
-    imgSrcs[idx] = dataURL;
-  };
+    
+  //};
+	
+	img.onload = function() {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage( img, 0, 0 );
+    localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
+		imgSrcs[idx] = localStorage.getItem('savedImageData');
+}
   img.src = src;
   if (img.complete || img.complete === undefined) {
     img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
