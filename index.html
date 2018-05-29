@@ -332,6 +332,7 @@ dirtyHTML = he.encode(dirtyHTML);
     for(var k = 0; k < imgSrcs.length; k++) {
 	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ', \'' + imgSrcs[k] + '\');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
     }
+	document.getElementById("hide1").style.display="none";
 }
 
   var zip = new JSZip();
@@ -356,7 +357,7 @@ var renamePics = function() {
     console.log(imgSrcs[k]);
     zip.file(document.getElementById("imageSrcName" + k).value + '.png', (imgSrcs[k].split(","))[1], {base64: true});
   }
-	
+document.getElementById("hide2").style.display="none";	
 }
 
 
@@ -459,6 +460,7 @@ button:active {
 </head>
 <body>
 
+	<div id="hide1">
 <!-- Create the editor container -->
 <div class="banner">Step 1: Paste in content from Google Docs.</div>
 	<br>
@@ -475,15 +477,17 @@ button:active {
 </script>
 	<br>
 	<div class="banner">Step 2: Set the image folder for this page on learn.</div><br>
-<input id="plxImgDir" value="http://learn.parallax.com/" size="60"/><br>
+<input id="plxImgDir" value="https://learn.parallax.com/sites/default/files/content/" size="60"/><br>
+	<i>be sure the address above ends with a forward slash ("/")
 <br>
 <div class="banner">Step 3: Rename each image file.</div><br>
 <button onclick="getImages();" id="ProcessImages">List Images</button><br>
 <div id="imageList"></div>
-<br>
+		<br></div>
+		<div id="hide2">
 <div class="banner">Step 4: Save new image names.</div><br>
 <button onclick="renamePics();" id="RenameImages">Save Images</button><br>
-<br>
+			<br></div>
 <div class="banner">Step 5: Download images and HTML.</div><br>
 <button onclick="downloadPics();" id="DownloadImages">Download Files</button><br>
 <br>
