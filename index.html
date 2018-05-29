@@ -2,6 +2,7 @@
 <head>
 <!-- Include stylesheet -->
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu|Lato|Share+Tech|PT+Sans|Heebo|Cabin|ABeeZee|Arimo|Encode+Sans+Semi+Condensed|Exo+2|Open+Sans">
 <script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
 <script>;(function(root) {
 
@@ -337,25 +338,6 @@ var renamePics = function() {
   var dirtyHTML = document.getElementById("cleanHTML").value;
   
     for(var k = 0; k < imgSrcs.length; k++) {
-/*
-	// hard won knowledge from http://stackoverflow.com/questions/20035615/using-raw-image-data-from-ajax-request-for-data-uri
-	if (imgSrcs[k].indexOf('://') > -1) {
-
-	  var xmlHTTP = new XMLHttpRequest();
-	  xmlHTTP.open('GET', 'https://crossorigin.me/' + imgSrcs[k]);
-	  xmlHTTP.responseType = 'arraybuffer';
-	  xmlHTTP.onload = function(e) {
-console.log(e);
-	    var arr = new Uint8Array(xmlHTTP.response);
-	    var raw = String.fromCharCode.apply(null,arr);
-	    var b64 = btoa(raw);
-
-	    imgSrcs[k]="data:image/png;base64," + b64;
-console.log("data:image/png;base64," + b64);
-	  };
-	  xmlHTTP.send();
-	}
-*/
 	dirtyHTML = dirtyHTML.replace('<img src="' + k + '" />', '<img src="' + plxPre + document.getElementById("imageSrcName" + k).value + '.png" />');
     }
 
@@ -385,7 +367,7 @@ function butter(k, s) {
 	var img = new Image,
 	    canvas = document.createElement("canvas"),
 	    ctx = canvas.getContext("2d"),
-	    src = s; //"https://docs.google.com/a/parallax.com/drawings/d/sBfeQmHGlYmU0LurqpjSXfg/image?w=554&h=238&rev=91&ac=1"; // insert image url here
+	    src = s; 
 
 	img.crossOrigin = "Anonymous";
 
@@ -419,12 +401,23 @@ var downloadPics = function () {
 
 
 </script>
-
+	
+<style>
+html, body {
+    background-color: white;
+    font-family: Arimo, sans-serif;
+    margin: 0;
+    padding:0;
+    overflow: hidden;
+}
+	
+</style>
 </head>
 <body>
 
 <!-- Create the editor container -->
 Step 1: Paste in content from Google Docs.
+	<br>
 <div id="editor" style="height:200px;">
   <p>Hello World!</p>
   <p>Some initial <strong>bold</strong> text</p>
@@ -436,7 +429,7 @@ Step 1: Paste in content from Google Docs.
     theme: 'snow'
   });
 </script>
-Step 2: Set the image folder for this page on learn.
+Step 2: Set the image folder for this page on learn.<br>
 <input id="plxImgDir" value="http://learn.parallax.com/" size="60"/><br>
 <button onclick="getImages();" id="ProcessImages">Process Images</button><br>
 <button onclick="showPics();" id="ListImages">List Images</button><br>
