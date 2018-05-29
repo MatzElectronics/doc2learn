@@ -399,6 +399,21 @@ document.getElementById("hide2").style.display="none";
   
 }
 
+var copy2clip = function () {
+  function myFunction() {
+  /* Get the text field */
+  var copyText = document.getElementById("cleanHTML");
+
+  /* Select the text field */
+  copyText.select();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Blur the element */
+  document.getElementById("cleanHTML").blur();
+}
+
 
 </script>
 	
@@ -496,5 +511,5 @@ button:active {
 <br></div>
 <div class="banner">Step 6: Copy HTML below and paste into the learn CMS <b>source</b>.</div><br>
 <textarea id="cleanHTML" htmlEsacpe="false"></textarea>
-
+<button onclick="copy2clip(); id="clipHTML">Copy HTML to clipboard</button><br>
 </body></html>  
