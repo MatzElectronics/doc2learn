@@ -376,7 +376,7 @@ console.log("data:image/png;base64," + b64);
 var showPics = function() {
     var theList = document.getElementById("imageList");
     for(var k = 0; k < imgSrcs.length; k++) {
-	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ', "' + imgSrcs[k] + '");">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
+	theList.innerHTML = theList.innerHTML + k + ':&nbsp;&nbsp;<img src="' + imgSrcs[k] + '" height="30" onload="butter(' + k + ', \'' + imgSrcs[k] + '\');">&nbsp;&nbsp;' + '<input id="imageSrcName' + k + '" value="image' + k + '" />.png<br />';
     }
 }
 
