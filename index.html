@@ -416,12 +416,53 @@ html, body {
 	margin: 5px;
 }
 	
+	/*Normal*/
+button {
+	background-color: #3B4052;
+	border: 1px solid #272930;
+	-moz-box-shadow:inset 0px 0px 1px rgba(52,55,63,1);
+	-webkit-box-shadow:inset 0px 0px 1px rgba(52,55,63,1);
+	box-shadow:inset 0px 0px 1px rgba(52,55,63,1);
+	background-image: -o-linear-gradient(90deg , rgb(58,66,82) 0%, rgb(98,105,125) 100%);
+	background-image: -moz-linear-gradient(90deg , rgb(58,66,82) 0%, rgb(98,105,125) 100%);
+	background-image: -webkit-linear-gradient(90deg , rgb(58,66,82) 0%, rgb(98,105,125) 100%);
+	background-image: -ms-linear-gradient(90deg , rgb(58,66,82) 0%, rgb(98,105,125) 100%);
+	background-image: linear-gradient(90deg , rgb(58,66,82) 0%, rgb(98,105,125) 100%);
+	color: #FFFFFF;
+	text-shadow: rgba(0,0,0,0.5) 0px 1px 0px;
+}
+
+/*Hover*/
+button:hover {
+	background-color: #555B72;
+	background-image: -o-linear-gradient(90deg , rgb(73,81,99) 0%, rgb(113,121,144) 100%);
+	background-image: -moz-linear-gradient(90deg , rgb(73,81,99) 0%, rgb(113,121,144) 100%);
+	background-image: -webkit-linear-gradient(90deg , rgb(73,81,99) 0%, rgb(113,121,144) 100%);
+	background-image: -ms-linear-gradient(90deg , rgb(73,81,99) 0%, rgb(113,121,144) 100%);
+	background-image: linear-gradient(90deg , rgb(73,81,99) 0%, rgb(113,121,144) 100%);
+}
+
+
+/*Active*/
+button:active {
+	background-color: #2E3444;
+	-moz-box-shadow:inset 0px 0px 5px rgba(52,55,63,1);
+	-webkit-box-shadow:inset 0px 0px 5px rgba(52,55,63,1);
+	box-shadow:inset 0px 0px 5px rgba(52,55,63,1);
+	background-image: -o-linear-gradient(90deg , rgb(98,105,125) 0%, rgb(58,66,82) 100%);
+	background-image: -moz-linear-gradient(90deg , rgb(98,105,125) 0%, rgb(58,66,82) 100%);
+	background-image: -webkit-linear-gradient(90deg , rgb(98,105,125) 0%, rgb(58,66,82) 100%);
+	background-image: -ms-linear-gradient(90deg , rgb(98,105,125) 0%, rgb(58,66,82) 100%);
+	background-image: linear-gradient(90deg , rgb(98,105,125) 0%, rgb(58,66,82) 100%);
+	text-shadow: none;
+}
+
 </style>
 </head>
 <body>
 
 <!-- Create the editor container -->
-<span class="banner">Step 1: Paste in content from Google Docs.</span>
+<div class="banner">Step 1: Paste in content from Google Docs.</div>
 	<br>
 <div id="editor" style="height:200px;">
   <p>Hello World!</p>
@@ -434,7 +475,8 @@ html, body {
     theme: 'snow'
   });
 </script>
-	<span class="banner">Step 2: Set the image folder for this page on learn.</span><br>
+	<br>
+	<div class="banner">Step 2: Set the image folder for this page on learn.</div><br>
 <input id="plxImgDir" value="http://learn.parallax.com/" size="60"/><br>
 <button onclick="getImages();" id="ProcessImages">Process Images</button><br>
 <button onclick="showPics();" id="ListImages">List Images</button><br>
