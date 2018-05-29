@@ -342,7 +342,7 @@ var renamePics = function() {
 	if (imgSrcs[k].indexOf('://') > -1) {
 
 	  var xmlHTTP = new XMLHttpRequest();
-	  xmlHTTP.open('GET', imgSrcs[k]);
+	  xmlHTTP.open('GET', 'https://crossorigin.me' + imgSrcs[k]);
 	  xmlHTTP.responseType = 'arraybuffer';
 	  xmlHTTP.onload = function(e) {
 console.log(e);
