@@ -346,7 +346,7 @@ var renamePics = function() {
 	dirtyHTML = dirtyHTML.replace('<img src="' + k + '" />', '<img src="' + plxPre + document.getElementById("imageSrcName" + k).value + '.png" />');
     }
 
-	dirtyHTML = dirtyHTML.replace(/<p>\s*<br[>\s\/]*<\/p>/g,"<p>&nbsp;</p>");
+	dirtyHTML = dirtyHTML.replace(/<p>[<br[>\s\/]*<\/p>/g,"<p>&nbsp;</p>");
 	dirtyHTML = dirtyHTML.replace(/<\/p>/g,"</p>\n");
   document.getElementById("cleanHTML").value = dirtyHTML;
   document.getElementById("imageList").style.display = "none";
