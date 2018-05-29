@@ -406,9 +406,14 @@ var downloadPics = function () {
 html, body {
     background-color: white;
     font-family: Arimo, sans-serif;
-    margin: 0;
-    padding:0;
     overflow: hidden;
+}
+	
+.banner {
+	color: white;
+	background: dark blue;
+	padding: 5px;
+	margin: 5px;
 }
 	
 </style>
@@ -416,7 +421,7 @@ html, body {
 <body>
 
 <!-- Create the editor container -->
-Step 1: Paste in content from Google Docs.
+<span class="banner">Step 1: Paste in content from Google Docs.</span>
 	<br>
 <div id="editor" style="height:200px;">
   <p>Hello World!</p>
@@ -429,7 +434,7 @@ Step 1: Paste in content from Google Docs.
     theme: 'snow'
   });
 </script>
-Step 2: Set the image folder for this page on learn.<br>
+	<span class="banner">Step 2: Set the image folder for this page on learn.</span><br>
 <input id="plxImgDir" value="http://learn.parallax.com/" size="60"/><br>
 <button onclick="getImages();" id="ProcessImages">Process Images</button><br>
 <button onclick="showPics();" id="ListImages">List Images</button><br>
