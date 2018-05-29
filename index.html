@@ -366,7 +366,8 @@ console.log("data:image/png;base64," + b64);
 
 
   for (var k = 0; k < imgSrcs.length; k++) {
-    //console.log(imgSrcs[k]);
+	  console.log("Image " + k);
+    console.log(imgSrcs[k]);
     zip.file(document.getElementById("imageSrcName" + k).value + '.png', (imgSrcs[k].split(","))[1], {base64: true});
   }
 	
